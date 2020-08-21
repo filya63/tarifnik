@@ -1,0 +1,51 @@
+{
+  "cardList": [
+    {
+      "title": "Объединяйся!",
+      "imgSpeed": "assets/images/iconWebGray.svg",
+      "altImgSpeed": "Скорость интернета",
+      "speed": "До 100 Мбит/с",
+      "imgChanel": "assets/images/iconTVGray.svg",
+      "altImgChanel": "Количество каналов",
+      "chanel": "140 каналов 20HD",
+      "price": "899",
+      "parentSelector": ".services-list"
+    },
+    {
+      "title": "Летай!",
+      "imgSpeed": "assets/images/iconWebGray.svg",
+      "altImgSpeed": "Скорость интернета",
+      "speed": "До 120 Мбит/с",
+      "imgChanel": "assets/images/iconTVGray.svg",
+      "altImgChanel": "Количество каналов",
+      "chanel": "160 каналов 20HD",
+      "price": "1299",
+      "parentSelector": ".services-list"
+    },
+    {
+      "title": "Кайфуй!",
+      "imgSpeed": "assets/images/iconWebGray.svg",
+      "altImgSpeed": "Скорость интернета",
+      "speed": "До 150 Мбит/с",
+      "imgChanel": "assets/images/iconTVGray.svg",
+      "altImgChanel": "Количество каналов",
+      "chanel": "200 каналов 20HD",
+      "price": "1699",
+      "parentSelector": ".services-list"
+    },
+    {
+      "title": "Можно всё!",
+      "imgSpeed": "assets/images/iconWebGray.svg",
+      "altImgSpeed": "Скорость интернета",
+      "speed": "До 200 Мбит/с",
+      "imgChanel": "assets/images/iconTVGray.svg",
+      "altImgChanel": "Количество каналов",
+      "chanel": "500 каналов 20HD",
+      "price": "2299",
+      "parentSelector": ".services-list"
+    }
+  ],
+  "requestForm": [
+
+  ]
+}

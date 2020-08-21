@@ -1,0 +1,14 @@
+@mixin styleBtn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px;
+    width: 165px;
+    border-radius: 25px;
+    background: #3343E1;
+    border-radius: 20px;
+    color: white;
+    &:hover {
+        box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    }
+}

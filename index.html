@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-navbar">
+            <div class="header-navbar__logo"></div>
+            <nav class="header-navbar__menu">
+                <div class="header-navbar__menu-item">
+                    <a href="" class="header-navbar__menu-item_link">Домашний интернет</a>
+                    <div class="header-navbar__submenu">
+                        <a href="" class="header-navbar__submenu-item_link">Для модема</a>
+                        <a href="" class="header-navbar__submenu-item_link">Для дачи и дома</a>
+                        <a href="" class="header-navbar__submenu-item_link">Для смартфона</a>
+                    </div>
+                </div>
+                <div class="header-navbar__menu-item">
+                    <a href="" class="header-navbar__menu-item_link">Интернет и ТВ</a>
+                </div>
+                <div class="header-navbar__menu-item">
+                    <a href="" class="header-navbar__menu-item_link">Телевидение</a>
+                </div>
+            </nav>
+            <button class="header-navbar__number">8 800 111 11 11</button>
+        </div>
+        <div class="header-form">
+            <h2 class="header-form__title">Заявка на подключение</h2>
+            <form class="header-form__content" action="#">
+                <div class="header-form__content-checkbox">
+                        <label class="header-form__content-checkbox-group"><input type="radio" class="header-form__content-checkbox-group-radio" name="connectLocation" value="isHome" checked="true">В квартиру</label>
+                        <label class="header-form__content-checkbox-group"><input type="radio" class="header-form__content-checkbox-group-radio" name="connectLocation" value="isOffice">В частный дом/офис</label>
+                </div>
+                <input type="tel" placeholder="Ваш телефон*" name="number" class="header-form__content-input">
+                <input type="text" placeholder="Ваше имя" name="user" class="header-form__content-input">
+                <input type="text" placeholder="Адрес подключения" name="address" class="header-form__content-input">
+                <span class="header-form__content-info">Поля, отмеченные *, обязательны к заполнению</span>
+                <input type="submit" value="Отправить заявку" class="header-form__content-btn">
+            </form>
+        </div>
+    </header>
+    <section class="services">
+        <h2 class="services-title">Тарифы домашний интернет</h2>
+        <div class="services-list"></div>
+    </section>
+
+    <script src='js/script.js' type="module"></script>
+</body>
+
+</html>

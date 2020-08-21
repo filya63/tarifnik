@@ -1,0 +1,116 @@
+@import '../_mixin';
+.header {
+    position: relative;
+    height: 100vh;
+    background: url(../../assets/images/laptop-desk-macbook-apple-table-floor-99193-pxhere.jpg) center/cover no-repeat;
+
+    &-navbar {
+        top: 0;
+        background-color: rgba(255, 255, 255, 0.7);
+        height: 60px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        &__submenu {
+            display: none;
+            flex-direction: column;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            opacity: 0.9;
+            border-top: 3px solid #3343E1;
+            border-radius: 0 0 10px 10px;
+            padding: 10px 0 10px 0;
+
+            &-item_link {
+                padding: 5px 0 5px 0;
+
+                &:hover {
+                    background: #3343E1;
+                    color: white;
+                }
+            }
+        }
+
+        &__menu {
+            display: flex;
+            height: 100%;
+
+            &-item {
+                width: 200px;
+
+                &_link {
+                    height: 100%;
+                    display: block;
+                    text-align: center;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 20px;
+                    padding-top: 20px;
+
+                    &:hover {
+                        color: #3343E1;
+                    }
+                }
+            }
+        }
+
+        &__number {
+            @include styleBtn;
+        }
+
+        &__logo {
+            background: url(../../assets/images/logo.svg) no-repeat;
+            width: 165px;
+            height: 30px;
+            cursor: pointer;
+        }
+    }
+    &-form {
+        padding: 40px 140px 40px 140px;
+        margin: 95px auto;
+        width: 45%;
+        background: #E1F1FF;
+        border-radius: 20px;
+        &__title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        &__content {
+            &-checkbox {
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-around;
+                &-group {
+                    cursor: pointer;
+                    &-radio {
+                        cursor: pointer;
+                        margin-right: 5px;
+                    }
+                }
+            }
+            &-input {
+                background: #FFFFFF;
+                border-radius: 15px;
+                width: 100%;
+                border: none;
+                height: 35px;
+                outline: none;
+                margin-bottom: 18px;
+                padding: 0 15px 0 15px;
+            }
+            &-info {
+                display: block;
+                font-size: 12px;
+                line-height: 14px;
+                margin-bottom: 13px;
+            }
+            &-btn {
+                display: block;
+                margin: 0 auto;
+                @include styleBtn;
+            }
+        }
+    }
+}

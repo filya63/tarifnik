@@ -1,0 +1,80 @@
+@import '../_mixin';
+.services {
+    background: #E5E5E5;
+    &-title {
+        text-align: center;
+        padding-top: 15px;
+    }
+    &-list {
+        padding-top: 15px;
+        width: 70%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        &__item {
+            width: 31%;
+            margin-right: 3.5%;
+            background: #FFFFFF;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 21px;
+            text-align: center;
+            &-title {
+                text-decoration-line: underline;
+            }
+            &:nth-child(-n + 3) {
+                margin-bottom: 15px;
+            }
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+            &-class {
+                margin-top: 22px;
+                width: 50%;
+                &_descr {
+                    white-space: pre-wrap;
+                    margin-top: 10px;
+                }
+                &_image {
+                    width: 50px;
+                    height: auto;
+                }
+            }
+            &-classes {
+                display: flex;
+                justify-content: space-around;
+
+            }
+            &-connect {
+                margin-top: 10px;
+                padding-top: 10px;
+                display: flex;
+                justify-content: space-around;
+                border-top: 1px solid #C4C4C4;
+                &-price {
+                    display: grid;
+                    grid-column-gap: 5px;
+                    align-items: center;
+                    grid-template-areas:
+                    "price currency"
+                    "price time";
+                    &_value {
+                        grid-area: price;
+                        font-size: 34px;
+                        line-height: 46px;
+                    }
+                    &_currency {
+                        grid-area: currency;
+                        border-bottom: 1px solid black;
+                    }
+                    &_time {
+                        grid-area: time;
+                    }
+                }
+                &-btn {
+                    @include styleBtn;
+                }
+            }
+        }
+    }
+}
