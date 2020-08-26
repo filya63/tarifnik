@@ -52,4 +52,27 @@ const message = {
         });
     });
 
+// Валидация формы
+
+const number = document.querySelector('#number'),
+      user = document.querySelector('#user');
+console.log(user);
+console.log(number);
+number.addEventListener('input', (e) => {
+    console.log(e);
+    if(e.data.match(/\D/)) { // Если в значении инпута не число тогда
+        number.style.border = '1px solid red';
+        number.value = number.value.replace(/\D/i, ''); // Если не число заменяем на '' 
+    } else {
+        number.style.border = 'none';
+    }
+});
+user.addEventListener('input', (e) => {
+    if(e.data.match(/[0-9_+=-]/gm)) {
+        user.style.border = '1px solid red';
+        user.value = user.value.replace(/[0-9_+=-]/gm, '');
+    } else {
+        user.style.border = 'none';
+    }
+});
 // Карточки товаров

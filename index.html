@@ -37,9 +37,9 @@
                         <label class="header-form__content-checkbox-group"><input type="radio" class="header-form__content-checkbox-group-radio" name="connectLocation" value="isHome" checked="true">В квартиру</label>
                         <label class="header-form__content-checkbox-group"><input type="radio" class="header-form__content-checkbox-group-radio" name="connectLocation" value="isOffice">В частный дом/офис</label>
                 </div>
-                <input type="tel" placeholder="Ваш телефон*" name="number" class="header-form__content-input">
-                <input type="text" placeholder="Ваше имя" name="user" class="header-form__content-input">
-                <input type="text" placeholder="Адрес подключения" name="address" class="header-form__content-input">
+                <input type="tel" placeholder="Ваш телефон*" id="number" name="number" class="header-form__content-input">
+                <input type="text" placeholder="Ваше имя" id="user" maxlength="80" name="user" class="header-form__content-input">
+                <input type="text" placeholder="Адрес подключения" id="address" maxlength="255" name="address" class="header-form__content-input">
                 <span class="header-form__content-info">Поля, отмеченные *, обязательны к заполнению</span>
                 <input type="submit" value="Отправить заявку" class="header-form__content-btn">
             </form>
