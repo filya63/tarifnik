@@ -14,7 +14,7 @@ const postData = async (url, data) => { // внутри будет асинхр�
         },
         body: data
     });
-    return await res.json(); // дожидаемся метода json, только после этого возвращаем значение функции
+    return await res.json(); // дожидаемся метода json, только после этого возвращаем значение функции. Возвращается обычный объект
 }
 
 const form = document.querySelector('form');
@@ -30,13 +30,14 @@ const message = {
         notice.textContent = message.loading;
         form.append(notice);
         
-        const dataForm = new FormData(form), // Забираем данные с формы
-          object = {};
+        const dataForm = new FormData(form); // Забираем данные с формы
+        const json = JSON.stringify(Object.fromEntries(dataForm.entries())); // из полученных данных получаем массив массивов. Далее переводим массив в обычный объект и переводим в JSON строку
+/*           object = {};
           dataForm.forEach((item, i) => { // из экземляра FormData перезаписываем в json
             object[i] = item;
-        });
+        }); */
 
-        postData('http://localhost:3000/requestForm', JSON.stringify(object))
+        postData('http://localhost:3000/requestForm', json)
         .then(data => {
             console.log(data);
             console.log('Запрос выполнен корректно', data);
@@ -76,3 +77,30 @@ user.addEventListener('input', (e) => {
     }
 });
 // Карточки товаров
+
+const getCard = async (url) => {
+    const res = await fetch(url);
+
+    if(!res.ok) { // свойство ok возвращает либо true, либо false после обработки fetch запроса 
+        throw new Error(`Fetch не обработал запрос ${url}. Статус: ${res.status}`);
+    }
+
+    return await res.json(); // Возвращаем полученный объект
+}
+
+getCard('http://localhost:3000/cardList')
+    .then(cardList => {
+        cardList.forEach((card) => {
+            new Card(
+                card.title,
+                card.imgSpeed,
+                card.altImgSpeed,
+                card.speed,
+                card.imgChanel,
+                card.altImgChanel,
+                card.chanel,
+                card.price,
+                card.parentSelector
+            ).render();
+        });
+    });
