@@ -1,7 +1,9 @@
 'use strict';
 
 import menu from './modules/menu.js';
-import {Card} from './modules/cards.js';
+import {
+    Card
+} from './modules/cards.js';
 
 menu('.header-navbar__menu-item');
 
@@ -18,50 +20,87 @@ const postData = async (url, data) => { // внутри будет асинхр�
 }
 
 const form = document.querySelector('form');
+// Проверка полей
+const inputsForm = document.querySelectorAll('.header-form__content-input');
+const checkInput = () => {
+    inputsForm.forEach(item => {
+        if (item.value != '') {
+            item.classList.remove('empty');
+        } else {
+            item.classList.add('empty');
+        }
+        setTimeout(function () {
+            if (item.classList.contains('empty')) {
+                item.classList.remove('empty');
+            }
+        }, 2000);
+    })
+};
+
+// Проверка незаполненных полей
+const emptyInputCount = () => {
+    let count = 0;
+    checkInput();
+    inputsForm.forEach(item => {
+        if (item.classList.contains('empty')) {
+            count++;
+        }
+    });
+    return count;
+}
+
 const message = {
     loading: 'Данные отправляются на сервер, подождите..',
     success: 'Ваши данные получены - дождитесь ответа.',
     failure: 'Данные до нас не дошли, пожалуйста, повторите попытку..'
-  };
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+};
 
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const count = emptyInputCount();
+    console.log(count);
+    if (count > 0) {
+        alert('Заполните все поля формы');
+    } else {
         const notice = document.createElement('div'); // блок с уведомлением пользователя
         notice.textContent = message.loading;
         form.append(notice);
-        
+
         const dataForm = new FormData(form); // Забираем данные с формы
         const json = JSON.stringify(Object.fromEntries(dataForm.entries())); // из полученных данных получаем массив массивов. Далее переводим массив в обычный объект и переводим в JSON строку
-/*           object = {};
-          dataForm.forEach((item, i) => { // из экземляра FormData перезаписываем в json
-            object[i] = item;
-        }); */
+        /*           object = {};
+                  dataForm.forEach((item, i) => { // из экземляра FormData перезаписываем в json
+                    object[i] = item;
+                }); */
 
         postData('http://localhost:3000/requestForm', json)
-        .then(data => {
-            console.log(data);
-            console.log('Запрос выполнен корректно', data);
-            notice.textContent = message.success;
-        }).catch((err) => {  // Предыдущий промис отображаем в консоль
-            console.log(err);
-            notice.textContent = message.failure;
-        }).finally(() => {
-            form.reset();
-            setTimeout(() => {
-                notice.remove();
-            }, 2000);
-        });
-    });
+            .then(data => {
+                console.log(data);
+                console.log('Запрос выполнен корректно', data);
+                notice.textContent = message.success;
+            }).catch((err) => { // Предыдущий промис отображаем в консоль
+                console.log(err);
+                notice.textContent = message.failure;
+            }).finally(() => {
+                form.reset();
+                setTimeout(() => {
+                    notice.remove();
+                }, 2000);
+            });
+    }
+
+});
 
 // Валидация формы
 
 const number = document.querySelector('#number'),
-      user = document.querySelector('#user');
+    user = document.querySelector('#user');
 console.log(user);
 console.log(number);
 number.addEventListener('input', (e) => {
     console.log(e);
-    if(e.data.match(/\D/)) { // Если в значении инпута не число тогда
+    if (e.data.match(/\D/)) { // Если в значении инпута не число тогда
         number.style.border = '1px solid red';
         number.value = number.value.replace(/\D/i, ''); // Если не число заменяем на '' 
     } else {
@@ -69,7 +108,7 @@ number.addEventListener('input', (e) => {
     }
 });
 user.addEventListener('input', (e) => {
-    if(e.data.match(/[0-9_+=-]/gm)) {
+    if (e.data.match(/[0-9_+=-]/gm)) {
         user.style.border = '1px solid red';
         user.value = user.value.replace(/[0-9_+=-]/gm, '');
     } else {
@@ -81,7 +120,7 @@ user.addEventListener('input', (e) => {
 const getCard = async (url) => {
     const res = await fetch(url);
 
-    if(!res.ok) { // свойство ok возвращает либо true, либо false после обработки fetch запроса 
+    if (!res.ok) { // свойство ok возвращает либо true, либо false после обработки fetch запроса 
         throw new Error(`Fetch не обработал запрос ${url}. Статус: ${res.status}`);
     }
 

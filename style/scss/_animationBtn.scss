@@ -1,0 +1,29 @@
+@keyframes slideme {
+    0% { left: -30px; margin-left: 0px; }
+    30% { left: 110%; margin-left: 80px; }
+    100% { left: 110%; margin-left: 80px; }
+}
+@mixin anumationOptionParent {
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.4s ease-out;
+}
+@mixin animationBtn {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 300px;
+    margin-left: 60px;
+    background: linear-gradient(90deg, rgba(255,255,255, 0.1), rgba(255,255,255,0.3));
+    position: absolute;
+    left: -40px;
+    top: -150px;
+    z-index: 1;
+    transform: rotate(45deg);
+    transition: all 0.1s;
+    animation-name: slideme;
+    animation-duration: 5s;
+    animation-delay: 0.05s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}

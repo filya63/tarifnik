@@ -1,4 +1,5 @@
 @import '../_mixin';
+@import '../animationBtn';
 .header {
     position: relative;
     height: 100vh;
@@ -12,7 +13,12 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-
+        &__number {
+            @include anumationOptionParent;
+            &:after {
+                @include animationBtn;
+            }
+        }
         &__submenu {
             display: none;
             flex-direction: column;
@@ -113,4 +119,7 @@
             }
         }
     }
+}
+.empty {
+    border: 1px solid red;
 }

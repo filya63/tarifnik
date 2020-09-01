@@ -28,6 +28,36 @@ a {
   color: #252421;
 }
 
+@-webkit-keyframes slideme {
+  0% {
+    left: -30px;
+    margin-left: 0px;
+  }
+  30% {
+    left: 110%;
+    margin-left: 80px;
+  }
+  100% {
+    left: 110%;
+    margin-left: 80px;
+  }
+}
+
+@keyframes slideme {
+  0% {
+    left: -30px;
+    margin-left: 0px;
+  }
+  30% {
+    left: 110%;
+    margin-left: 80px;
+  }
+  100% {
+    left: 110%;
+    margin-left: 80px;
+  }
+}
+
 .header {
   position: relative;
   height: 100vh;
@@ -47,6 +77,41 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.header-navbar__number {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: background-color 0.4s ease-out;
+  transition: background-color 0.4s ease-out;
+}
+
+.header-navbar__number:after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 300px;
+  margin-left: 60px;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.3)));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+  position: absolute;
+  left: -40px;
+  top: -150px;
+  z-index: 1;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  -webkit-animation-name: slideme;
+          animation-name: slideme;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-delay: 0.05s;
+          animation-delay: 0.05s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 
 .header-navbar__submenu {
@@ -189,6 +254,10 @@ a {
           box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+.empty {
+  border: 1px solid red;
+}
+
 .services {
   background: #E5E5E5;
 }
@@ -199,7 +268,7 @@ a {
 }
 
 .services-list {
-  padding-top: 15px;
+  padding: 15px 0 15px 0;
   width: 70%;
   margin: 0 auto;
   display: -webkit-box;
@@ -274,7 +343,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-      grid-template-areas: "price currency" "price time";
+      grid-template-areas: "price currency" "price time";
 }
 
 .services-list__item-connect-price_value {
