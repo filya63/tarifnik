@@ -1,0 +1,17 @@
+@mixin respondTo($_media) {
+    @if $_media == phones {
+        @media (max-width: 479px) { @content; }
+    }
+    @else if $_media == wide-phones {
+        @media (min-width: 480px) and (max-width: 767px) { @content; }
+    }
+    @else if $_media == tablets {
+        @media (min-width: 768) and (max-width: 991px) { @content; }
+    }
+    @else if $_media == small-desktops {
+        @media (min-width: 992px) and (max-width: 1199px) { @content; }
+    }
+    @else if $_media == lg-desktops {
+        @media (min-width: 1200px) and (max-width: 1440px) { @content; }
+    }
+}

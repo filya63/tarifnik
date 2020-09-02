@@ -1,29 +1,20 @@
 'use strict';
 
 import menu from './modules/menu.js';
-import {
-    Card
-} from './modules/cards.js';
+import {Card} from './modules/cards.js';
+import mask from './modules/mask.js';
+import postData from './modules/postData.js';
 
 menu('.header-navbar__menu-item');
+mask('[name="number"]');
 
 // Форма
-const postData = async (url, data) => { // внутри будет асинхронный код
-    const res = await fetch(url, { // дожидаемся результат запроса
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: data
-    });
-    return await res.json(); // дожидаемся метода json, только после этого возвращаем значение функции. Возвращается обычный объект
-}
 
 const form = document.querySelector('form');
-// Проверка полей
+// Проверка полей 
 const inputsForm = document.querySelectorAll('.header-form__content-input');
-const checkInput = () => {
-    inputsForm.forEach(item => {
+const checkInput = (inputs) => {
+    inputs.forEach(item => {
         if (item.value != '') {
             item.classList.remove('empty');
         } else {
@@ -37,11 +28,11 @@ const checkInput = () => {
     })
 };
 
-// Проверка незаполненных полей
-const emptyInputCount = () => {
+// Считаем количество пустых полей
+const emptyInputCount = (inputs) => {
     let count = 0;
-    checkInput();
-    inputsForm.forEach(item => {
+    checkInput(inputsForm);
+    inputs.forEach(item => {
         if (item.classList.contains('empty')) {
             count++;
         }
@@ -52,20 +43,20 @@ const emptyInputCount = () => {
 const message = {
     loading: 'Данные отправляются на сервер, подождите..',
     success: 'Ваши данные получены - дождитесь ответа.',
-    failure: 'Данные до нас не дошли, пожалуйста, повторите попытку..'
+    failure: 'Данные до нас не дошли, пожалуйста, повторите попытку..',
+    errorForm: 'Заполните все поля формы.'
 };
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const count = emptyInputCount();
-    console.log(count);
-    if (count > 0) {
-        alert('Заполните все поля формы');
-    } else {
-        const notice = document.createElement('div'); // блок с уведомлением пользователя
+    const notice = document.createElement('div'); // блок с уведомлением пользователя
+    form.append(notice);
+
+    const count = emptyInputCount(inputsForm);
+    console.log('Незаполненных полей формы: ', count);
+    if (count <= 0) {
         notice.textContent = message.loading;
-        form.append(notice);
 
         const dataForm = new FormData(form); // Забираем данные с формы
         const json = JSON.stringify(Object.fromEntries(dataForm.entries())); // из полученных данных получаем массив массивов. Далее переводим массив в обычный объект и переводим в JSON строку
@@ -88,13 +79,18 @@ form.addEventListener('submit', (e) => {
                     notice.remove();
                 }, 2000);
             });
+    } else {
+        notice.textContent = message.errorForm;
+        setTimeout(() => {
+            notice.remove();
+        }, 2000);
     }
 
 });
 
 // Валидация формы
 
-const number = document.querySelector('#number'),
+/* const number = document.querySelector('#number'),
     user = document.querySelector('#user');
 console.log(user);
 console.log(number);
@@ -114,7 +110,8 @@ user.addEventListener('input', (e) => {
     } else {
         user.style.border = 'none';
     }
-});
+}); */
+
 // Карточки товаров
 
 const getCard = async (url) => {
