@@ -72,6 +72,7 @@
                     }
                 }
                 &-btn {
+                    width: 50%;
                     @include styleBtn;
                 }
             }

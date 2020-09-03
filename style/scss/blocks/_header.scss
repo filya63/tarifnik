@@ -14,6 +14,7 @@
         justify-content: space-around;
         align-items: center;
         &__number {
+            width: 165px;
             @include anumationOptionParent;
             &:after {
                 @include animationBtn;
