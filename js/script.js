@@ -1,12 +1,13 @@
 'use strict';
 
-import menu from './modules/menu.js';
+import menu, {screenCheck} from './modules/menu.js';
 import {Card} from './modules/cards.js';
 import mask from './modules/mask.js';
 import postData from './modules/postData.js';
 
 menu('.header-navbar__menu-item');
 mask('[name="number"]');
+screenCheck('8 (800) 301-10-46');
 
 // Форма
 
